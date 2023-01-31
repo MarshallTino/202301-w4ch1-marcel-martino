@@ -1,39 +1,45 @@
+import { Gentlemen } from "../../types";
+
 interface GentlemanProps {
-  id: number;
-  name: string;
-  status: string;
-  profession: string;
-  twitter: string;
-  picture: string;
-  alternativeText: string;
-  selected: boolean;
+  gentlemen: Gentlemen;
 }
 
-const GentlemenComponent = (object: GentlemanProps): JSX.Element => {
+const GentlemenComponent = ({
+  gentlemen: {
+    alternativeText,
+    id,
+    name,
+    picture,
+    profession,
+    selected,
+    status,
+    twitter,
+  },
+}: GentlemanProps): JSX.Element => {
   return (
     <li className="gentleman">
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
-          src={object.picture}
-          alt="The Fary pointing at you"
+          src={`./img/${picture}`}
+          alt={alternativeText}
         />
-        <span className="gentleman__initial">{object.name[0]}</span>
+        <span className="gentleman__initial">{name[0]}</span>
       </div>
       <div className="gentleman__data-container">
-        <h2 className="gentleman__name">{object.name}</h2>
+        <h2 className="gentleman__name">{name}</h2>
         <ul className="gentleman__data-list">
           <li className="gentleman__data">
             <span className="gentleman__data-label">Profession:</span>
-            {object.profession}
+            {profession}
           </li>
           <li className="gentleman__data">
-            <span className="gentleman__data-label">Status:</span>{" "}
-            {object.status}
+            <span className="gentleman__data-label">Status:</span>
+            {status}
           </li>
           <li className="gentleman__data">
-            <span className="gentleman__data-label">Twitter:</span>{" "}
-            {object.twitter}
+            <span className="gentleman__data-label">Twitter:</span>
+            {twitter}
           </li>
         </ul>
       </div>
